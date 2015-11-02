@@ -13,6 +13,11 @@ set ( SRC_FILES
 # alias
 set ( MOD_NAME ${PYBINDING_NAME} )
 
+# create empty portinfo
+execute_process(
+  COMMAND ${CMAKE_COMMAND} -E touch ${CMAKE_BINARY_DIR}/libnumpyext/include/portinfo
+)
+
 # -I and -L
 include_directories(${PYTHON_INCLUDE_DIRS})
 include_directories(${CMAKE_BINARY_DIR}/libnumpyext/include)

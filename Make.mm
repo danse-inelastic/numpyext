@@ -18,7 +18,7 @@ PROJECT = numpyext
 BUILD_DIRS = \
     libnumpyext \
     numpyextmodule \
-    numpyext \
+    python \
 
 OTHER_DIRS = \
     tests \
