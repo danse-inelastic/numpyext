@@ -1,0 +1,17 @@
+from distutils.core import setup
+
+# include cmake-built extension modules as data files
+# find the modules
+import glob, os
+files = glob.glob("numpyext/*")
+modules = []
+for f in files:
+  if f.endswith(".py"): continue
+  modules.append(os.path.basename(f))
+
+setup(name='numpyext',
+  version='${PACKAGE_VERSION}',
+  package_dir={ '': '${CMAKE_CURRENT_BINARY_DIR}' },
+  packages=['numpyext'],
+  package_data = {"numpyext": modules},
+  )

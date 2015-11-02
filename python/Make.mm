@@ -16,13 +16,10 @@ PROJECT = numpyext
 # directory structure
 
 BUILD_DIRS = \
-    libnumpyext \
-    numpyextmodule \
-    python \
+    numpyext \
 
 OTHER_DIRS = \
-    tests \
-    examples
+
 
 RECURSE_DIRS = $(BUILD_DIRS) $(OTHER_DIRS)
 
