@@ -14,7 +14,7 @@
 #include <sstream>
 #include <iostream>
 
-#include "numpyext/Iterator1D.h"
+#include "danse/ins/numpyext/Iterator1D.h"
 #include "Iterator1D_Example.h"
 
 

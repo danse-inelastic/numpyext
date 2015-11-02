@@ -3,15 +3,15 @@ from distutils.core import setup
 # include cmake-built extension modules as data files
 # find the modules
 import glob, os
-files = glob.glob("numpyext/*")
+files = glob.glob("danse/ins/numpyext/*")
 modules = []
 for f in files:
   if f.endswith(".py"): continue
-  modules.append(os.path.basename(f))
+  modules.append(os.path.abspath(f))
 
-setup(name='numpyext',
+setup(name='danse.ins.numpyext',
   version='${PACKAGE_VERSION}',
-  package_dir={ '': '${CMAKE_CURRENT_BINARY_DIR}' },
-  packages=['numpyext'],
-  package_data = {"numpyext": modules},
+  package_dir={ 'danse.ins.numpyext': '${CMAKE_CURRENT_BINARY_DIR}/danse/ins/numpyext' },
+  packages=['danse.ins.numpyext'],
+  package_data = {"danse.ins.numpyext": modules},
   )

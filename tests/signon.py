@@ -12,10 +12,13 @@
 # 
 
 
-def test0():
-    import numpyext
-    from numpyext import numpyext as numpyextmodule
+from danse.ins import numpyext
+from danse.ins.numpyext import numpyext as numpyextmodule
+from numpy import array, arange
 
+
+def test0():
+    print numpyext
     print "copyright information:"
     print "   ", numpyext.copyright()
     print "   ", numpyextmodule.copyright()
@@ -32,16 +35,12 @@ def test0():
 
 
 def testprintdblarray():
-    from numpyext import numpyext as numpyextmodule
-    from numpy import array, arange
     a = arange( 1, 10, 1.0 )
     numpyextmodule.printdblarray( a )
     return
 
 
 def testprintdblarray2():
-    from numpyext import numpyext as numpyextmodule
-    from numpy import array, arange
     a = arange( 1, 10, 1.0 )
     ptr = numpyextmodule.getdataptr( a )
     size = len(a)
@@ -51,8 +50,6 @@ def testprintdblarray2():
 
 
 def testwrapptr( ):
-    from numpyext import numpyext as numpyextmodule
-    from numpy import array, arange
     a = arange( 1, 10, 1.0 )
     ptr = numpyextmodule.getdataptr( a )
     b = numpyextmodule.wrapdataptr( ptr, a.dtype.num, len(a) )
