@@ -13,5 +13,5 @@ set ( INC_FILES
   VoidPtr.h
   )
 
-add_library ( numpyext ${SRC_FILES} ${INC_FILES} )
+add_library ( numpyext SHARED ${SRC_FILES} ${INC_FILES} )
 
