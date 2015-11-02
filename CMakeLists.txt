@@ -17,7 +17,11 @@ ENDFUNCTION(PREPEND)
 set (PYBINDING_NAME "${PROJECT_NAME}module")
 set (LIB_NAME "lib${PROJECT_NAME}")
 
+#
+enable_testing()
+
 # subdirs
 add_subdirectory(${LIB_NAME})
 add_subdirectory(${PYBINDING_NAME})
 add_subdirectory(python)
+add_subdirectory(tests)
