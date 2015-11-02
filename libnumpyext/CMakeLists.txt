@@ -13,10 +13,10 @@ set ( EXPORT_HEADERS
   )
 # ----------------------------------------
 
-#
+# include python headers
 include_directories( ${PYTHON_INCLUDE_DIRS} )
 
-# export headers
+# export headers from this project
 foreach (header ${EXPORT_HEADERS})
   configure_file(
     "${header}"
