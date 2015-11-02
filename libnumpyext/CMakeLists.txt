@@ -15,3 +15,4 @@ set ( INC_FILES
 
 add_library ( numpyext SHARED ${SRC_FILES} ${INC_FILES} )
 
+install (FILES ${INC_FILES} DESTINATION include/numpyext)
