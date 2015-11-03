@@ -17,7 +17,7 @@ configure_file("MANIFEST.in" "MANIFEST.in")
 foreach (py ${SRC_FILES})
   configure_file(
     "${PROJECT_NAME}/${py}"
-    "${PROJECT_NAME}/${py}"
+    "${PARENT_PATH}/${PROJECT_NAME}/${py}"
     )
 endforeach (py)
 

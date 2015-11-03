@@ -20,18 +20,18 @@ include_directories( ${PYTHON_INCLUDE_DIRS} )
 foreach (header ${EXPORT_HEADERS})
   configure_file(
     "${header}"
-    "${CMAKE_CURRENT_BINARY_DIR}/include/${PROJECT_NAME}/${header}"
+    "${CMAKE_CURRENT_BINARY_DIR}/include/${PARENT_PATH}/${PROJECT_NAME}/${header}"
     )
 endforeach (header)
 
 # compile shared lib
-add_library ( ${PROJECT_NAME} SHARED ${SRC_FILES} ${INC_FILES} )
+add_library ( ${LIB_NAME} SHARED ${SRC_FILES} ${INC_FILES} )
 
 # install headers
 install (
-  DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/include/${PROJECT_NAME} 
+  DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/include/${LIB_HEADER_CONTAINER}
   DESTINATION include)
 # install shared lib
-install (TARGETS ${PROJECT_NAME}
+install (TARGETS ${LIB_NAME}
   LIBRARY DESTINATION lib
   )
