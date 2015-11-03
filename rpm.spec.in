@@ -1,0 +1,47 @@
+# -*- rpm-spec -*-
+Summary:        @CPACK_PACKAGE_SUMMARY@
+Name:           @CPACK_PACKAGE_NAME@
+Version:        @CPACK_PACKAGE_VERSION@
+Release:        @CPACK_PACKAGE_RELEASE@
+License:        @CPACK_PACKAGE_LICENSE@
+Group:          @CPACK_PACKAGE_APP_GROUP@
+Source:         @CPACK_PACKAGE_NAME@-@CPACK_PACKAGE_VERSION@-Source.tar.gz
+BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root
+BuildRequires:	cmake
+
+Requires: gcc-c++
+Requires: python
+Requires: cmake >= 2.6
+
+%description
+@CPACK_PACKAGE_SUMMARY@
+
+%define prefix /opt
+%define rpmprefix $RPM_BUILD_ROOT%{prefix}
+%define srcdirname %{name}-%{version}-Source
+
+%prep
+%setup -q -n %{srcdirname}
+
+%build
+cd ..
+rm -rf build_tree
+mkdir build_tree
+cd build_tree
+cmake -DCMAKE_INSTALL_PREFIX=%{rpmprefix} ../%{srcdirname}
+make
+  
+%install 
+cd ../build_tree
+make install
+
+%clean
+rm -rf %{srcdirname}
+rm -rf build_tree
+
+%files
+%defattr(-,root,root,-)
+%dir %{prefix}
+%{prefix}/*
+
+%changelog
