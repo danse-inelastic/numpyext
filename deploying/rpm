@@ -1,0 +1,5 @@
+sudo yum install -y git gcc-c++ cmake make 
+sudo yum install -y python python-devel numpy 
+sudo yum install -y rpm-build 
+rpmbuild --rebuild https://github.com/danse-inelastic/numpyext/releases/download/v0.1/danse.ins.numpyext-0.1-0.src.rpm
+sudo rpm -i ~/rpmbuild/RPMS/x86_64/danse.ins.numpyext-0.1-0.x86_64.rpm

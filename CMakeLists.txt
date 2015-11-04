@@ -18,7 +18,7 @@ else()
 endif()
 set(INSTALL_LIB_DIR
   lib${LIBSUFFIX} CACHE PATH "Installation directory for libraries")
-MESSAGE( STATUS ${INSTALL_LIB_DIR})
+# message( STATUS "Install lib dir: ${INSTALL_LIB_DIR}")
 mark_as_advanced(INSTALL_LIB_DIR)
 
 #list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}")
