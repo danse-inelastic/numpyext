@@ -1,17 +1,13 @@
 # -*- rpm-spec -*-
+Summary:        @CPACK_PACKAGE_SUMMARY@
 Name:           @CPACK_PACKAGE_NAME@
 Version:        @CPACK_PACKAGE_VERSION@
 Release:        @CPACK_PACKAGE_RELEASE@
-Summary:        @CPACK_PACKAGE_SUMMARY@
-Group:          @CPACK_PACKAGE_APP_GROUP@
-Vendor:         @CPACK_PACKAGE_VENDOR@
-Packager:       @CPACK_PACKAGE_VENDOR@ <@CPACK_PACKAGE_CONTACT@>
-
 License:        @CPACK_PACKAGE_LICENSE@
-Source0:         @CPACK_PACKAGE_NAME@-@CPACK_PACKAGE_VERSION@.tar.gz
-
-BuildRequires:	@CPACK_RPM_PACKAGE_REQUIRES@
-Prefix:         @CPACK_PACKAGING_INSTALL_PREFIX@
+Group:          @CPACK_PACKAGE_APP_GROUP@
+Source:         @CPACK_PACKAGE_NAME@-@CPACK_PACKAGE_VERSION@.tar.gz
+BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root
+BuildRequires:	cmake
 
 Requires: gcc-c++
 Requires: python
@@ -20,23 +16,32 @@ Requires: cmake >= 2.6
 %description
 @CPACK_PACKAGE_SUMMARY@
 
+%define prefix @CPACK_PACKAGING_INSTALL_PREFIX@
+%define rpmprefix $RPM_BUILD_ROOT%{prefix}
+%define srcdirname %{name}-%{version}
+
 %prep
-%setup -q
+%setup -q -n %{srcdirname}
 
 %build
-%cmake -DBUILD_TESTING=True .
-make %{?_smp_mflags}
+cd ..
+rm -rf build_tree
+mkdir build_tree
+cd build_tree
+cmake -DCMAKE_INSTALL_PREFIX=%{rpmprefix} ../%{srcdirname}
+make
+  
+%install 
+cd ../build_tree
+make install
 
-%install
-rm -rf %{buildroot}
-%make_install
-
-%check
-ctest -V %{?_smp_mflags}
+%clean
+rm -rf %{srcdirname}
+rm -rf build_tree
 
 %files
 %defattr(-,root,root,-)
-%{_includedir}/portinfo
-%{_includedir}/danse/
-%{_libdir}/
-%doc
+%dir %{prefix}
+%{prefix}/*
+
+%changelog
