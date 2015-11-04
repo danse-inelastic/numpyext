@@ -33,5 +33,5 @@ install (
   DESTINATION include)
 # install shared lib
 install (TARGETS ${LIB_NAME}
-  LIBRARY DESTINATION lib
+  LIBRARY DESTINATION ${INSTALL_LIB_DIR}
   )

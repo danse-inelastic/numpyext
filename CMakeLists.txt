@@ -16,7 +16,6 @@ if ("${LIB64}" STREQUAL "TRUE")
 else()
     set(LIBSUFFIX "")
 endif()
-
 set(INSTALL_LIB_DIR
   lib${LIBSUFFIX} CACHE PATH "Installation directory for libraries")
 MESSAGE( STATUS ${INSTALL_LIB_DIR})
