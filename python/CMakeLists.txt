@@ -14,17 +14,20 @@ configure_file("setup.py.in" "setup.py")
 configure_file("MANIFEST.in" "MANIFEST.in")
 
 # copy all python source over to build directory
+set (SRC_PATHS "")
 foreach (py ${SRC_FILES})
   configure_file(
     "${PROJECT_NAME}/${py}"
     "${PARENT_PATH}/${PROJECT_NAME}/${py}"
     )
+  set(SRC_PATHS  "${SRC_PATHS};${PROJECT_NAME}/${py}")
 endforeach (py)
+# message(STATUS "src: ${SRC_PATHS}")
 
 # use a timestamp to connect dependency of the target
 # on the python source files and also the binding modules
-set(DEPS        "${SRC_FILES} ${PYBINDING_NAME}")
-PREPEND(DEPS ${PYBINDING_NAME})
+set(DEPS        "${SRC_PATHS};${PYBINDING_NAME}")
+# message(STATUS "deps: ${DEPS}")
 set(OUTPUT      "${CMAKE_CURRENT_BINARY_DIR}/build/timestamp")
 # use setup.py to build and then update time stamp
 add_custom_command(OUTPUT ${OUTPUT}

@@ -6,7 +6,14 @@ set(AUTHOR "Jiao Lin")
 set(VENDOR "DANSE")
 set(SUMMARY "limited utils for get data ptr from numpy array")
 set(LICENSE "BSD")
-set(RPM_APP_GROUP "Library/Misc")
+set(RPM_APP_GROUP "Development/Tools")
+
+# variables
+set (PYBINDING_NAME "${PROJECT_NAME}module")
+set (LIB_NAME "danse_ins_${PROJECT_NAME}")
+set (PARENT_PATH "danse/ins")
+set (PARENT_PY_PKG "danse.ins")
+set (PKG_NAME "${PARENT_PY_PKG}.${PROJECT_NAME}")
 
 
 # lib64
@@ -26,22 +33,6 @@ mark_as_advanced(INSTALL_LIB_DIR)
 # needs python
 find_package ( PythonLibs REQUIRED )
 find_package ( PythonInterp REQUIRED )
-
-# custom functions
-FUNCTION(PREPEND var prefix)
-   SET(listVar "")
-   FOREACH(f ${ARGN})
-      LIST(APPEND listVar "${prefix}/${f}")
-   ENDFOREACH(f)
-   SET(${var} "${listVar}" PARENT_SCOPE)
-ENDFUNCTION(PREPEND)
-
-# variables
-set (PYBINDING_NAME "${PROJECT_NAME}module")
-set (LIB_NAME "danse_ins_${PROJECT_NAME}")
-set (PARENT_PATH "danse/ins")
-set (PARENT_PY_PKG "danse.ins")
-set (PKG_NAME "${PARENT_PY_PKG}.${PROJECT_NAME}")
 
 #
 enable_testing()
