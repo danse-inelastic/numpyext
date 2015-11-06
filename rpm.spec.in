@@ -7,13 +7,13 @@ License:        @CPACK_PACKAGE_LICENSE@
 Group:          @CPACK_PACKAGE_APP_GROUP@
 Source:         @CPACK_PACKAGE_NAME@-@CPACK_PACKAGE_VERSION@.tar.gz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root
-BuildRequires:	cmake
+BuildRequires:  gcc-c++
+BuildRequires:	cmake > 2.6
 BuildRequires:	make
+BuildRequires:  python-devel
+BuildRequires:  numpy
 
-Requires: gcc-c++
 Requires: python
-Requires: python-devel
-Requires: cmake >= 2.6
 Requires: numpy
 Requires: danse.ins
 
