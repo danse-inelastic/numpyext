@@ -38,6 +38,12 @@ add_custom_command(OUTPUT ${OUTPUT}
 add_custom_target(pypkg ALL DEPENDS ${OUTPUT})
 
 # install
+# where to record installed file?
+# define PY_INSTALL_RECORD to override.
+# this is used in rpm.spec.in
+if ("${PY_INSTALL_RECORD}" STREQUAL "")
+  set(PY_INSTALL_RECORD "INSTALLED_PY_FILES")
+endif()
 # have to specify working_directory otherwise manifest.in is not used
 set(INSTALL_PY_PATH "${INSTALL_LIB_DIR}/python${PYTHON_VERSION_MAJOR}.${PYTHON_VERSION_MINOR}/site-packages")
-install(CODE "execute_process(WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/python COMMAND ${PYTHON_EXECUTABLE} ${SETUP_PY} install --home=${CMAKE_INSTALL_PREFIX} --install-purelib=${CMAKE_INSTALL_PREFIX}/${INSTALL_PY_PATH} )")
+install(CODE "execute_process(WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/python COMMAND ${PYTHON_EXECUTABLE} ${SETUP_PY} install --home=${CMAKE_INSTALL_PREFIX} --install-purelib=${CMAKE_INSTALL_PREFIX}/${INSTALL_PY_PATH} --record=${PY_INSTALL_RECORD} )")
