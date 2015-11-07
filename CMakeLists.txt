@@ -3,10 +3,12 @@ project (numpyext)
 
 set(VERSION "0.1")
 set(AUTHOR "Jiao Lin")
+set(AUTHOR_EMAILE "jiao.lin@gmail.com")
 set(VENDOR "DANSE")
-set(SUMMARY "limited utils for get data ptr from numpy array")
+set(SUMMARY "utils for get data ptr from numpy array")
 set(LICENSE "BSD")
 set(RPM_APP_GROUP "Development/Tools")
+set(GITHUB_URL "https://github.com/danse-inelastic/numpyext")
 
 # variables
 set (PYBINDING_NAME "${PROJECT_NAME}module")
@@ -33,6 +35,8 @@ mark_as_advanced(INSTALL_LIB_DIR)
 # needs python
 find_package ( PythonLibs REQUIRED )
 find_package ( PythonInterp REQUIRED )
+# python installation path
+set(INSTALL_PY_PATH "${INSTALL_LIB_DIR}/python${PYTHON_VERSION_MAJOR}.${PYTHON_VERSION_MINOR}/site-packages")
 
 #
 enable_testing()
@@ -99,3 +103,6 @@ add_custom_target(
   srpm
   DEPENDS ${SRC_RPM}
   )
+
+# docker folder for build and test packaging artifacts
+add_subdirectory(docker)

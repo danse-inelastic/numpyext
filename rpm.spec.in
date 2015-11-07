@@ -32,7 +32,7 @@ cd ..
 rm -rf build_tree
 mkdir build_tree
 cd build_tree
-cmake -DCMAKE_INSTALL_PREFIX=%{rpmprefix} -DPY_INSTALL_RECORD=../../INSTALLED_PY_FILES ../%{srcdirname}
+cmake -DCMAKE_INSTALL_PREFIX=%{rpmprefix} ../%{srcdirname}
 make
 
 %install 
@@ -44,9 +44,10 @@ cd ..
 rm -rf %{srcdirname}
 rm -rf build_tree
 
-%files -f INSTALLED_PY_FILES
+%files
 %defattr(-,root,root,-)
-%{_includedir}%/danse/ins/numpyext/*
-%{_libdir}%/lib*
+%{prefix}/include/@PARENT_PATH@/@PROJECT_NAME@/*
+%{prefix}/@INSTALL_LIB_DIR@/*
+%{prefix}/bin/*
 
 %changelog
