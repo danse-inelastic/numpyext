@@ -15,6 +15,9 @@ set (PYBINDING_NAME "${PROJECT_NAME}module")
 set (LIB_NAME "danse_ins_${PROJECT_NAME}")
 set (PARENT_PATH "danse/ins")
 set (PARENT_PY_PKG "danse.ins")
+set (PARENT_GITHUB_URL "https://github.com/danse-inelastic/danse.ins")
+set (PARENT_VERSION "0.1")
+set (PARENT_RELEASE "0")
 set (PKG_NAME "${PARENT_PY_PKG}.${PROJECT_NAME}")
 
 
