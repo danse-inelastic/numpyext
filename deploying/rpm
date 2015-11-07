@@ -1,5 +1,12 @@
-sudo yum install -y git gcc-c++ cmake make 
-sudo yum install -y python python-devel numpy 
-sudo yum install -y rpm-build 
+# deps
+sudo yum install -y deltarpm
+sudo yum install -y git cmake make gcc-c++ python python-devel rpm-build
+sudo yum install -y numpy
+
+# danse.ins
+rpmbuild --rebuild https://github.com/danse-inelastic/danse.ins/releases/download/v0.1/danse.ins-0.1-0.src.rpm
+sudo rpm -i ~/rpmbuild/RPMS/x86_64/danse.ins-0.1-0.x86_64.rpm
+
+# danse.ins.numpyext
 rpmbuild --rebuild https://github.com/danse-inelastic/numpyext/releases/download/v0.1/danse.ins.numpyext-0.1-0.src.rpm
 sudo rpm -i ~/rpmbuild/RPMS/x86_64/danse.ins.numpyext-0.1-0.x86_64.rpm
