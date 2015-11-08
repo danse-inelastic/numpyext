@@ -29,7 +29,7 @@ add_library ( ${LIB_NAME} SHARED ${SRC_FILES} ${INC_FILES} )
 
 # install headers
 install (
-  DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/include/${PARENT_PATH}/${PROJECT_NAME}
+  DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/include/${PARENT_PATH}/${PROJECT_NAME}/
   DESTINATION include/${PARENT_PATH}/${PROJECT_NAME})
 # install shared lib
 install (TARGETS ${LIB_NAME}

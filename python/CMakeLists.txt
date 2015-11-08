@@ -14,29 +14,17 @@ configure_file("setup.py.in" "setup.py")
 configure_file("MANIFEST.in" "MANIFEST.in")
 
 # copy all python source over to build directory
-set (SRC_PATHS "")
 foreach (py ${SRC_FILES})
   configure_file(
     "${PROJECT_NAME}/${py}"
-    "${PARENT_PATH}/${PROJECT_NAME}/${py}"
+    "modules/${PARENT_PATH}/${PROJECT_NAME}/${py}"
     )
-  set(SRC_PATHS  "${SRC_PATHS};${PROJECT_NAME}/${py}")
 endforeach (py)
 # message(STATUS "src: ${SRC_PATHS}")
 
-# use a timestamp to connect dependency of the target
-# on the python source files and also the binding modules
-set(DEPS        "${SRC_PATHS};${PYBINDING_NAME}")
-# message(STATUS "deps: ${DEPS}")
-set(OUTPUT      "${CMAKE_CURRENT_BINARY_DIR}/build/timestamp")
-# use setup.py to build and then update time stamp
-add_custom_command(OUTPUT ${OUTPUT}
-  COMMAND ${PYTHON_EXECUTABLE} ${SETUP_PY} build
-  COMMAND ${CMAKE_COMMAND} -E touch ${OUTPUT}
-  DEPENDS ${DEPS})
-# 
-add_custom_target(pypkg ALL DEPENDS ${OUTPUT})
-
 # install
 # have to specify working_directory otherwise manifest.in is not used
-install(CODE "execute_process(WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/python COMMAND ${PYTHON_EXECUTABLE} ${SETUP_PY} install --home=${CMAKE_INSTALL_PREFIX} --install-purelib=${CMAKE_INSTALL_PREFIX}/${INSTALL_PY_PATH} )")
+# install(CODE "execute_process(WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/python COMMAND ${PYTHON_EXECUTABLE} ${SETUP_PY} install --home=${CMAKE_INSTALL_PREFIX} --install-purelib=${CMAKE_INSTALL_PREFIX}/${INSTALL_PY_PATH} )")
+install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/modules/
+  DESTINATION ${INSTALL_PY_PATH}
+  )
