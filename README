@@ -5,7 +5,7 @@ This package provides tools to make use numpy arrays in c++ and c.
 Iterator1D generates iterators of numpy array so that you can use it in c++
 just as it is 1D iterator.
 
-see numpyextmodule/Iterator1D_Example.cc and tests/signon.py for an example.
+see pyext/Iterator1D_Example.cc and tests/signon.py for an example.
 
 2. getdataptr
 getdataptr creates PyCObject of void pointer pointing to the start of the
@@ -14,7 +14,7 @@ data array held in a numpy array.
 To manipulate the pointer, you must be sure that you know its layout 
 (contiguous or not), and know what you are doing with it.
 
-see numpyextmodule/getdataptr.cc and tests/signon.py for an example.
+see pyext/getdataptr.cc and tests/signon.py for an example.
 
 
 3. wrapdataptr
@@ -23,4 +23,4 @@ numpy array shares memory with the original data pointer. So be
 careful to keep a reference to the original python object where the
 void * pointer is derived from.
 
-See numpyextmodule/wrapdataptr.cc and tests/signon.py for an example.
+See pyext/wrapdataptr.cc and tests/signon.py for an example.
