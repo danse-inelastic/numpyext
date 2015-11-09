@@ -14,7 +14,7 @@
 #include <portinfo>
 #include <iostream>
 
-#include "../libnumpyext/hello.h"
+#include "../lib/hello.h"
 
 int main() {
 

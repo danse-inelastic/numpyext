@@ -16,8 +16,8 @@ PROJECT = numpyext
 # directory structure
 
 BUILD_DIRS = \
-    libnumpyext \
-    numpyextmodule \
+    lib \
+    pyext \
     python \
 
 OTHER_DIRS = \
