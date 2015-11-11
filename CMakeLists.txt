@@ -12,8 +12,8 @@ set(GITHUB_URL "https://github.com/danse-inelastic/numpyext")
 
 # packaging with the help of docker and packagecloud
 # package repository at packagecloud
-set (PKGCLOUD_USERNAME "linjiao")
-set (PKGCLOUD_REPO "danse_ins")
+set (PKGCLOUD_USERNAME "danse")
+set (PKGCLOUD_REPO "ins")
 # dependencies
 set (DOCKER_PKGING_DEPS_DEB "python-numpy danse.ins")
 set (DOCKER_PKGING_DEPS_RPM "numpy danse.ins")
