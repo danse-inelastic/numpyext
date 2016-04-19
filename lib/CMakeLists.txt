@@ -14,7 +14,8 @@ set ( EXPORT_HEADERS
 # ----------------------------------------
 
 # include python headers
-include_directories( ${PYTHON_INCLUDE_DIRS} )
+execute_process(COMMAND python -c "import numpy, os; print os.path.join(os.path.dirname(numpy.__file__), 'core', 'include')" OUTPUT_VARIABLE NUMPY_INCLUDE_DIR)
+include_directories( ${PYTHON_INCLUDE_DIRS} ${NUMPY_INCLUDE_DIR})
 
 # export headers from this project
 foreach (header ${EXPORT_HEADERS})
