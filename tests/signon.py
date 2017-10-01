@@ -1,3 +1,5 @@
+from __future__ import print_function
+
 #!/usr/bin/env python
 # 
 #  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -18,42 +20,42 @@ from numpy import array, arange
 
 
 def test0():
-    print numpyext
-    print "copyright information:"
-    print "   ", numpyext.copyright()
-    print "   ", numpyextmodule.copyright()
+    print(numpyext)
+    print("copyright information:")
+    print("   ", numpyext.copyright())
+    print("   ", numpyextmodule.copyright())
 
-    print
-    print "module information:"
-    print "    file:", numpyextmodule.__file__
-    print "    doc:", numpyextmodule.__doc__
-    print "    contents:", dir(numpyextmodule)
+    print()
+    print("module information:")
+    print("    file:", numpyextmodule.__file__)
+    print("    doc:", numpyextmodule.__doc__)
+    print("    contents:", dir(numpyextmodule))
 
-    print
-    print numpyextmodule.hello()
+    print()
+    print(numpyextmodule.hello())
     return
 
 
 def testprintdblarray():
-    a = arange( 1, 10, 1.0 )
-    numpyextmodule.printdblarray( a )
+    a = arange(1, 10, 1.0)
+    numpyextmodule.printdblarray(a)
     return
 
 
 def testprintdblarray2():
-    a = arange( 1, 10, 1.0 )
-    ptr = numpyextmodule.getdataptr( a )
+    a = arange(1, 10, 1.0)
+    ptr = numpyextmodule.getdataptr(a)
     size = len(a)
     del a
-    numpyextmodule.printdblarray2( ptr, size )
+    numpyextmodule.printdblarray2(ptr, size)
     return
 
 
-def testwrapptr( ):
-    a = arange( 1, 10, 1.0 )
-    ptr = numpyextmodule.getdataptr( a )
-    b = numpyextmodule.wrapdataptr( ptr, a.dtype.num, len(a) )
-    a[4]= 999
+def testwrapptr():
+    a = arange(1, 10, 1.0)
+    ptr = numpyextmodule.getdataptr(a)
+    b = numpyextmodule.wrapdataptr(ptr, a.dtype.num, len(a))
+    a[4] = 999
     assert a[4] == b[4]
     return
     
