@@ -1,18 +1,10 @@
 #!/usr/bin/env python
 # 
-#  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-# 
-#                               Michael A.G. Aivazis
-#                        California Institute of Technology
-#                        (C) 1998-2005  All Rights Reserved
-# 
-#  <LicenseText>
-# 
-#  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-# 
+
+__version__ = "0.1.2"
 
 def copyright():
-    return "numpyext pyre module: Copyright (c) 2007 Jiao Y Y Lin"
+    return "numpyext python module: Copyright (c) 2007-2018 Jiao Y Y Lin"
 
 
 import numpyext as binding
