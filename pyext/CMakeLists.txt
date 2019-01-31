@@ -20,6 +20,7 @@ execute_process(
 
 # -I and -L
 execute_process(COMMAND python -c "import numpy, os; print os.path.join(os.path.dirname(numpy.__file__), 'core', 'include')" OUTPUT_VARIABLE NUMPY_INCLUDE_DIR)
+message( "NUMPY_INCLUDE_DIR: " ${NUMPY_INCLUDE_DIR} )
 include_directories( ${PYTHON_INCLUDE_DIRS} ${NUMPY_INCLUDE_DIR})
 include_directories(${CMAKE_BINARY_DIR}/lib/include)
 link_directories(${CMAKE_BINARY_DIR}/lib)
