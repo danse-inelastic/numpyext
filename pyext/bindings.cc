@@ -14,6 +14,9 @@
 #include <portinfo>
 #include <Python.h>
 
+#define NO_IMPORT_ARRAY
+#define PY_ARRAY_UNIQUE_SYMBOL numpyext_ARRAY_API
+
 #include "bindings.h"
 
 #include "misc.h"          // miscellaneous methods

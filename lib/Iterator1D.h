@@ -20,10 +20,10 @@
 // #include <sstream>
 
 //numpy stuff
-#define PY_ARRAY_UNIQUE_SYMBOL numpyext_ARRAY_API
-#ifndef STANDALONE_USE_OF_NUMPY_SUPPORT
-#define NO_IMPORT_ARRAY
-#endif
+// #ifndef STANDALONE_USE_OF_NUMPY_SUPPORT
+// #define NO_IMPORT_ARRAY
+// #endif
+// #define PY_ARRAY_UNIQUE_SYMBOL numpyext_ARRAY_API
 #include "Python.h"
 #include "numpy/arrayobject.h"
 

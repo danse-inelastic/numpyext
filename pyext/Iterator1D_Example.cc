@@ -14,6 +14,9 @@
 #include <sstream>
 #include <iostream>
 
+#define NO_IMPORT_ARRAY
+#define PY_ARRAY_UNIQUE_SYMBOL numpyext_ARRAY_API
+
 #include "danse/ins/numpyext/Iterator1D.h"
 #include "Iterator1D_Example.h"
 
