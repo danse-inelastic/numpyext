@@ -15,7 +15,7 @@ def copyright():
     return "numpyext pyre module: Copyright (c) 2007 Jiao Y Y Lin"
 
 
-import numpyext as binding
+from . import numpyext as binding
 
 def getdataptr(npyarr):
     '''extract data pointer from a numpy array and return a PyCObject'''

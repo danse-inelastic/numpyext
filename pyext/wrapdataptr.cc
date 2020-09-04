@@ -23,6 +23,7 @@
 #include "Python.h"
 #include "numpy/arrayobject.h"
 
+#include "capsulethunk.h"
 #include "wrapdataptr.h"
 
 
@@ -44,18 +45,22 @@ namespace numpyextmod {
 
     // check pycobj
     std::ostringstream oss;
-    if (!PyCObject_Check(pycobj)) {
+    if (!PyCapsule_CheckExact(pycobj)) {
       oss << "not a PyCObject" << std::endl;
       PyErr_SetString( PyExc_ValueError, oss.str().c_str() );
       return 0;
     }
     
-    void *data = PyCObject_AsVoidPtr( pycobj );
+    void *data = PyCapsule_GetPointer( pycobj, NULL );
 
     int nd = 1;
-    int dims[1];
+    // int dims[1];
+    npy_intp dims[1];
     dims[0] = size;
-    return PyArray_FromDimsAndData( nd, dims, dtype, (char *)data);
+    // return PyArray_FromDimsAndData( nd, dims, dtype, (char *)data);
+    return PyArray_NewFromDescr
+      (&PyArray_Type, PyArray_DescrFromType(dtype),
+       nd, dims, NULL, data, 0, NULL);
   }
 
 }
