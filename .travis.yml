@@ -38,7 +38,8 @@ install:
   - cd -
 
 script:
-  - echo "test"
+  - cd tests
+  - python signon.py
 
 notifications:
   email:
