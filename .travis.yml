@@ -29,7 +29,7 @@ install:
   - conda create -n testenv python=$TRAVIS_PYTHON_VERSION anaconda-client pytest
   - source activate testenv
   - conda config --set anaconda_upload no
-  - conda install gxx_linux-64=7 cmake numpy
+  - conda install gxx_linux-64=7 cmake numpy danse.ins
   - export SRC=$PWD
   - export PREFIX=$CONDA_PREFIX
   - mkdir build
