@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # 
 
-__version__ = "0.1.2"
+__version__ = "0.1.3"
 
 def copyright():
     return "numpyext python module: Copyright (c) 2007-2018 Jiao Y Y Lin"
