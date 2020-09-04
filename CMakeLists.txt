@@ -29,7 +29,7 @@ set (CONDA_PKGING_RUN_DEPS "python numpy danse.ins")
 
 
 # variables
-set (PYBINDING_NAME "${PROJECT_NAME}module")
+set (PYBINDING_NAME "${PROJECT_NAME}")
 set (LIB_NAME "danse_ins_${PROJECT_NAME}")
 set (PARENT_PATH "danse/ins")
 set (PARENT_PY_PKG "danse.ins")

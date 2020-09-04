@@ -7,22 +7,22 @@ def copyright():
     return "numpyext python module: Copyright (c) 2007-2018 Jiao Y Y Lin"
 
 
-import numpyext as binding
+from . import numpyext as binding
 
-def getdataptr( npyarr ):
+def getdataptr(npyarr):
     '''extract data pointer from a numpy array and return a PyCObject'''
-    return binding.getdataptr( npyarr )
+    return binding.getdataptr(npyarr)
 
 
-def wrapdataptr( ptr, dtype, size ):
+def wrapdataptr(ptr, dtype, size):
     '''wrap a void pointer in the given PyCObject into  a numpy array
     dtype: type code or numpy dtype instance
     size: size of array
     '''
-    if not isinstance( dtype, int ):
+    if not isinstance(dtype, int):
         dtype = dtype.num
         pass
-    return binding.wrapdataptr( ptr, dtype, size )
+    return binding.wrapdataptr(ptr, dtype, size)
         
 
 # version

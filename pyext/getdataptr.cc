@@ -23,6 +23,7 @@
 #include "Python.h"
 #include "numpy/arrayobject.h"
 
+#include "capsulethunk.h"
 #include "utils.h"
 #include "getdataptr.h"
 
@@ -53,7 +54,10 @@ namespace numpyextmod {
     Py_INCREF( pyarray );
     void *ptr = PyArray_DATA( pyarray );
 
-    return PyCObject_FromVoidPtrAndDesc( ptr, pyarray, detach );
+    // return PyCObject_FromVoidPtrAndDesc( ptr, pyarray, detach );
+    PyObject *obj = PyCapsule_New(ptr, NULL, pycapsule_detach);
+    PyCapsule_SetContext(obj, pyarray);
+    return obj;
   }
 
 
@@ -73,7 +77,7 @@ namespace numpyextmod {
     if (!ok) return 0;
 
     // check pointer
-    if (!PyCObject_Check(obj)) {
+    if (!PyCapsule_CheckExact(obj)) {
       std::ostringstream oss;
       oss << "not a PyCObject" << std::endl;
       PyErr_SetString( PyExc_ValueError, oss.str().c_str() );
@@ -81,7 +85,7 @@ namespace numpyextmod {
     }
 
     // get void ponter
-    void * ptr = PyCObject_AsVoidPtr( obj );
+    void * ptr = PyCapsule_GetPointer( obj, NULL );
 
     double *arr = static_cast<double *> (ptr);
 
