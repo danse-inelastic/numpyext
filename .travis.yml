@@ -41,6 +41,7 @@ install:
 script:
   - cd tests
   - python signon.py
+  - python test_mem_leak.py
 
 notifications:
   email:

@@ -13,8 +13,8 @@ namespace numpyextmod {
     Py_DECREF( obj );
   }
 
-  void pycapsule_detach(PyObject * target) {
-    Py_DECREF( target );
+  void pycapsule_detach_context(PyObject * target) {
+    Py_DECREF( PyCapsule_GetContext(target) );
   }
 }
 

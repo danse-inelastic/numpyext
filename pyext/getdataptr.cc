@@ -50,13 +50,12 @@ namespace numpyextmod {
       PyErr_SetString( PyExc_ValueError, oss.str().c_str() );
       return 0;
     }
-    
-    Py_INCREF( pyarray );
     void *ptr = PyArray_DATA( pyarray );
 
     // return PyCObject_FromVoidPtrAndDesc( ptr, pyarray, detach );
-    PyObject *obj = PyCapsule_New(ptr, NULL, pycapsule_detach);
+    PyObject *obj = PyCapsule_New(ptr, NULL, pycapsule_detach_context);
     PyCapsule_SetContext(obj, pyarray);
+    Py_INCREF( pyarray );
     return obj;
   }
 

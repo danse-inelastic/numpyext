@@ -1,18 +1,5 @@
-from __future__ import print_function
-
 #!/usr/bin/env python
-# 
-#  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-# 
-#                               Michael A.G. Aivazis
-#                        California Institute of Technology
-#                        (C) 1998-2005  All Rights Reserved
-# 
-#  <LicenseText>
-# 
-#  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-# 
-
+from __future__ import print_function
 
 from danse.ins import numpyext
 from danse.ins.numpyext import numpyext as numpyextmodule
